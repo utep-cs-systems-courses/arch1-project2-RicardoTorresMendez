@@ -21,7 +21,7 @@ switch_init(){
   P2OUT |= SWITCHES;		/* pull-ups for switches */
   P2DIR &= ~SWITCHES;		/* set switches' bits for input */
   switch_update_interrupt_sense();
-  //led_update();
+  led_update();
 }
 
 void switch_interrupt_handler(){
@@ -32,7 +32,7 @@ void switch_interrupt_handler(){
   switch_state_3 = (p1val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   switch_state_4 = (p1val & SW4) ? 0 : 1; /* 0 when SW4 is up */
   switch_state_changed = 1;
-  //led_update();
+  led_update();
 
   if( switch_state_1 == 1 ){ buzzer_set_period( 1000 ); }
   else if( switch_state_2 == 1 ){ buzzer_set_period( 500 ); }

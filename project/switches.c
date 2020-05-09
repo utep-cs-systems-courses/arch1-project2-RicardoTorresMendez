@@ -25,7 +25,7 @@ switch_init(){
 }
 
 void switch_interrupt_handler(){
-  char constant;
+  int constant;
   char p1val = switch_update_interrupt_sense();
   switch_state_1 = (p1val & SW1) ? 0 : 1; /* 0 when SW1 is up */
   switch_state_2 = (p1val & SW2) ? 0 : 1; /* 0 when SW2 is up */
@@ -50,7 +50,7 @@ void switch_interrupt_handler(){
   }
   else if( switch_state_2 == 1 ){
     buzzer_set_period( 150 + constant );
-    switch_state_changed = 0;
+    switch_state_changed = 1;
   }
   else if( switch_state_3 == 1 ){
     buzzer_set_period( 200 + constant );

@@ -7,31 +7,25 @@ void __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
 
   switch( current_state ){
       case 0:
-        if (++blink_count >= 50) {
+        if (++blink_count >= 5) {
         	turn_off();
   		}
-  		if(++blink_count >= 100){
+  		if(++blink_count >= 10){
   			led_update();
   			blink_count = 0;
   		}
   		break;
       case 1:
-        if (++blink_count >= 30) {
+        if (++blink_count >= 2) {
         	turn_off();
   		}
-  		if(++blink_count >= 60){
+  		if(++blink_count >= 5){
   			led_update();
   			blink_count = 0;
   		}
   		break;
       case 2:
-        if (++blink_count >= 10) {
-        	turn_off();
-  		}
-  		if(++blink_count >= 20){
-  			led_update();
-  			blink_count = 0;
-  		}
+        led_update();
   		break;
       default:
         if (++blink_count >= 50) {

@@ -12,7 +12,7 @@ int main() {
   buzzer_init();
   led_init();
 
-  //enableWDTInterrupts();
+  enableWDTInterrupts();
 
   or_sr(0x18);  // CPU off, GIE on
 }

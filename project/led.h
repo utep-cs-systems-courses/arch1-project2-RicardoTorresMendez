@@ -10,5 +10,6 @@ extern unsigned char led_changed;
 
 void led_init();
 void led_update();
+void turn_off();
 
 #endif // included

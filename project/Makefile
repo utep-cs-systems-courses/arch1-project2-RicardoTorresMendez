@@ -11,7 +11,7 @@ AS              = msp430-elf-as
 all: project.elf 
 
 #additional rules for files
-project.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o toolMain.o buzzer.o ../demos/lib/libTimer.a
+project.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o led.o toolMain.o buzzer.o ../demos/lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: project.elf

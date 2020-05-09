@@ -1,7 +1,7 @@
 #include <msp430.h>
 #include "libTimer.h"
 // ********************* //
-//#include "led.h"
+#include "led.h"
 #include "buzzer.h"
 #include "switches.h"
 
@@ -10,7 +10,7 @@ int main() {
 
   switch_init();
   buzzer_init();
-  //led_init();
+  led_init();
 
   //enableWDTInterrupts();
 

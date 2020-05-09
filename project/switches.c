@@ -3,7 +3,7 @@
 //#include "led.h"
 #include "buzzer.h"
 
-char switch_state_down, switch_state_changed; /* effectively boolean */
+char switch_state_1, switch_state_2, switch_state_3, switch_state_4, switch_state_changed; /* effectively boolean */
 
 static char 
 switch_update_interrupt_sense() {
@@ -27,10 +27,16 @@ switch_init(){
 void switch_interrupt_handler(){
 
   char p1val = switch_update_interrupt_sense();
-  switch_state_down = (p1val & SW1) ? 0 : 1; /* 0 when SW1 is up */
+  switch_state_1 = (p1val & SW1) ? 0 : 1; /* 0 when SW1 is up */
+  switch_state_2 = (p1val & SW2) ? 0 : 1; /* 0 when SW2 is up */
+  switch_state_3 = (p1val & SW3) ? 0 : 1; /* 0 when SW3 is up */
+  switch_state_4 = (p1val & SW4) ? 0 : 1; /* 0 when SW4 is up */
   switch_state_changed = 1;
   //led_update();
 
-  if( switch_state_down == 1 ){ buzzer_set_period( 1000 ); }
+  if( switch_state_1 == 1 ){ buzzer_set_period( 1000 ); }
+  else if( switch_state_2 == 1 ){ buzzer_set_period( 500 ); }
+  else if( switch_state_3 == 1 ){ buzzer_set_period( 250 ); }
+  else if( switch_state_4 == 1 ){ buzzer_set_period( 125 ); }
   else{ buzzer_set_period( 0 ); }
 }
